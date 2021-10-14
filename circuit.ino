@@ -14,8 +14,8 @@ decode_results result;
 int speed = 0;
 int motorspeed1 = 0;
 int motorspeed2 = 0;
-int rightspeed = 250; //Rotation speed for right//
-int leftspeed = 250;  // Rotation speed for left//
+int rightspeed = 250; // Rotation speed for right //
+int leftspeed = 250;  // Rotation speed for left //
 
 // Declaring pins as constants b/c they don't change //
 const int motor1 =  9;
@@ -25,12 +25,12 @@ const int motor4 = 6;
 const int enA = 10;
 const int enB = 5;
 
-void turnleft(); // Function to go left //
-void turnright(); // Function to go right //
-void goforward(); // Function to go forward //
-void gobackward(); // Function to go forward //
+void turnleft(); 
+void turnright(); 
+void goforward(); 
+void gobackward(); 
 void inputspeed(int speed); //Function to input speed //
-void stop(); // Function to stop//
+void stop();
 void speeddown(); // Function to decrease speed by 5 //
 void speedup(); // Function to increase speed by 5 //
 
@@ -58,7 +58,7 @@ void loop()
             case 0xFD807F: //Volume+ Button //
               speedup();
             break;
-            case 0xFD40BF: //func stop Button //
+            case 0xFD40BF: //Func Stop Button //
               stop();
             break;
             case 0xFD20DF:// |<< Button //
@@ -85,7 +85,7 @@ void loop()
       }
       irrecv.resume(); // Used to resume listening after using decode //
     }
-    else if(irrecv.decode(&result) == 0)
+    else if(!irrecv.decode(&result))
       /* If remote control input is not picked up on, rc.decode returns
          false. If so, program checks for 
          other two sensors in case it picks up on a line*/
@@ -116,7 +116,7 @@ void loop()
 void turnleft()
 {
   digitalWrite(motor1, LOW);
-  digitalWrite(motor2, HIGH);
+  digitalWrite(motor2, HIGH); // Turns off motors on one side to turn left //
   digitalWrite(motor3, HIGH);
   digitalWrite(motor4, LOW);
   analogWrite(enA, leftspeed);
@@ -126,7 +126,7 @@ void turnleft()
 void turnright()
 {
   digitalWrite(motor1, HIGH);
-  digitalWrite(motor2, LOW);
+  digitalWrite(motor2, LOW); 
   digitalWrite(motor3, LOW);
   digitalWrite(motor4, HIGH);
   analogWrite(enA, leftspeed);
@@ -145,7 +145,7 @@ void goforward()
 
 void gobackward()
 {
-  digitalWrite(motor1, LOW);
+  digitalWrite(motor1, LOW); 
   digitalWrite(motor2, HIGH);
   digitalWrite(motor3, LOW);
   digitalWrite(motor4, HIGH);
@@ -158,7 +158,6 @@ void inputspeed(int input)
   speed = input;
   analogWrite(motorspeed1, speed);
   analogWrite(motorspeed2, speed);
-
 }
 
 void speedup()
