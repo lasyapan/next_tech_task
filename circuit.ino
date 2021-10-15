@@ -85,8 +85,8 @@ void loop()
       irrecv.resume(); // Used to resume listening after using decode //
     }
     else if(irrecv.isIdle())
-      /* If remote control input is not picked up on, rc.decode returns
-         false. If so, program checks for 
+      /* If remote control input is not picked up on, isIdle returns
+         true. If so, program checks for 
          other two sensors in case it picks up on a line*/
     {
       int left = digitalRead(A0); // Using digitalread to differentiate b/w light and dark //
