@@ -36,7 +36,6 @@ void speedup(); // Function to increase speed by 5 //
 
 void setup()
 {
- Serial.begin(9600);
  irrecv.enableIRIn(); // Start receiver //
  pinMode(motor1,OUTPUT);
  pinMode(motor2,OUTPUT);
