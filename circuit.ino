@@ -85,7 +85,7 @@ void loop()
       }
       irrecv.resume(); // Used to resume listening after using decode //
     }
-    else if(!irrecv.decode(&result))
+    else if(irrecv.isIdle())
       /* If remote control input is not picked up on, rc.decode returns
          false. If so, program checks for 
          other two sensors in case it picks up on a line*/
