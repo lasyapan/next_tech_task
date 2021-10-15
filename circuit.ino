@@ -90,7 +90,6 @@ void loop()
          false. If so, program checks for 
          other two sensors in case it picks up on a line*/
     {
-      irrecv.resume();
       int left = digitalRead(A0); // Using digitalread to differentiate b/w light and dark //
       int right = digitalRead(A1);
       
